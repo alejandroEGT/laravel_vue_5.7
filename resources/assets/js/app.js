@@ -3,7 +3,23 @@ require('./bootstrap');
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import routes from './rutas';
-Vue.router = new VueRouter({ routes: routes});
+import routes_david from './routes/rutas_david'
+import routes_mexi from './routes/rutas_bryan_montecino'
+import routes_bryan from './routes/rutas_bryan_vidal'
+import routes_felipe from './routes/rutas_felipe.js'
+
+Vue.use(VueRouter)
+
+Vue.router = new VueRouter({
+	routes: [
+    ...routes,
+    ...routes_david,
+    ...routes_mexi,
+    ...routes_bryan,
+    ...routes_felipe
+  ],
+  mode: 'history'
+});
 let AppLayout= require('./components/ExampleComponent');//Vista Suprema
 //ELEMENT UI.
 import Element from 'element-ui'
@@ -16,8 +32,9 @@ import VueAxios from 'vue-axios'
 import VueAuth from '@websanova/vue-auth'
  
 Vue.use(VueAxios, axios)
-Vue.use(Element);
-Vue.use(esLocale)
+// Vue.use(Element);
+// Vue.use(esLocale)
+Vue.use(Element, {locale: esLocale})
 
 Vue.use(VueAuth, {
    auth: require('@websanova/vue-auth/drivers/auth/bearer.js'),
@@ -29,8 +46,8 @@ Vue.use(VueAuth, {
    fetchData: {url: ' api/auth/user'},
    refreshData: {enabled: false},
 });
-Vue.use(VueRouter);
-const router = new VueRouter({ mode: 'history', routes: routes})
+
+//const router = new VueRouter({ mode: 'history', routes: routes})
 
 
 AppLayout.router = Vue.router;

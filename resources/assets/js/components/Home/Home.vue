@@ -7,10 +7,16 @@
             <router-link style="color:white" :to="{path:'/index'}" class="nav-link active color">Home</router-link>
           </li>
           <li class="nav-item">
-            <router-link style="color:white" :to="{name:'Chat'}"class="nav-link">Chat</router-link>
+            <router-link style="color:white" :to="{name:'David'}"class="nav-link">David</router-link>
           </li>
           <li class="nav-item">
-            <router-link style="color:white" :to="{name:'terminos'}" class="nav-link">otro</router-link>
+            <router-link style="color:white" :to="{name:'Bryanm'}" class="nav-link">Mexi</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link style="color:white" :to="{name:'Bryanv'}" class="nav-link">bryan</router-link>
+          </li>
+           <li class="nav-item">
+            <router-link style="color:white" :to="{name:'Felipe'}" class="nav-link">Felipe</router-link>
           </li>
           <li class="nav-item">
             <button @click="logout" >Salir</button>
