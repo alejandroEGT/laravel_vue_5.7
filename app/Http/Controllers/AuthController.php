@@ -5,24 +5,36 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
     public function login(Request $request)
 	{
-    	$credentials = $request->only('email', 'password');
-    	if ( ! $token = JWTAuth::attempt($credentials)) {
-            return response([
-                'status' => 'error',
-                'error' => 'invalid.credentials',
-                'msg' => 'Invalid Credentials.'
-            ], 400);
+		$validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+    	if ($validator->fails()) {
+    		return [ 'error' => 'Llene los datos.' ];
+    	}else{
+
+    		$credentials = $request->only('email', 'password');
+	    	if ( ! $token = JWTAuth::attempt($credentials)) {
+	            return response([
+	                'status' => 'error',
+	                'error' => 'invalid.credentials',
+	                'msg' => 'Invalid Credentials.'
+	            ], 400);
+	    	}
+	    	return response([
+	            'status' => 'success'
+	        ])
+	        ->header('Authorization', $token);
+	        
     	}
-    	return response([
-            'status' => 'success'
-        ])
-        ->header('Authorization', $token);
 	}
 
 	public function user(Request $request)

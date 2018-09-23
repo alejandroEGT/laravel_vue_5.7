@@ -45,18 +45,32 @@
     methods: {
       login(){
         var app = this
-        this.$auth.login({
-          data: app.form,
-          redirect:'/index',
-          success: function(){
-            //this.$router.push({ path: '/index' });
-          },
-          error: function(){},
-          rememberMe: true,
-          //redirect: '/index',
-          //fetchUser: true,
-        });
-      }
+        
+        if (app.form.email == null || app.form.password == null) {
+            this.$notify.error({
+                    title: 'Error',
+                    message: 'Faltan datos'
+                  });
+        }else{
+            this.$auth.login({
+              data: app.form,
+              redirect:'/index',
+              success(){
+                //this.$router.push({ path: '/index' });
+              },
+              error(res){
+                 
+                 this.$notify.error({
+                    title: 'Error',
+                    message: 'Error en la acción o usuario inexistente'
+                  });
+              },
+              rememberMe: true,
+              //redirect: '/index',
+              //fetchUser: true,
+            });
+          }
+        }
     }
   }
 </script>
