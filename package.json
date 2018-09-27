@@ -23,7 +23,7 @@
     "@fortawesome/fontawesome": "^1.1.4",
     "@websanova/vue-auth": "^2.21.14-beta",
     "axios": "^0.18.0",
-    "element-ui": "^2.4.5",
+    "element-ui": "^2.4.7",
     "vue-axios": "^2.0.2",
     "vue-router": "^3.0.1"
   }

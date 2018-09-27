@@ -1,37 +1,19 @@
+
 <template>
-	<div class="container">
-    <br>
-      <h3>Log in</h3>
-      <div class="row">
-          <div class="col-md-12">
-            <el-form ref="form" :model="form">
-              <el-form-item >
-                  <el-input
-                    placeholder="Correo"
-                    icon="fa fa-envelope-open"
-                    v-model="form.email">
-                  </el-input>
-
-              </el-form-item>
-              <el-form-item>
-                  <el-input
-                    type="password"
-                    placeholder="Clave"
-                    icon="fa fa-key"
-                    v-model="form.password">
-                  </el-input>
-              </el-form-item>
-
-              <el-button class="btn-block" @click="login">Log in</el-button>
-            </el-form>
-            <div class="row justify-content-md-center">
-              <router-link :to="{name:'registro'}"class="nav-link">Crear una cuenta aqui</router-link>
-            </div>  
-          </div>
-          
-      </div>
-	  
-	</div>
+  <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-position="left" label-width="0px" class="demo-ruleForm login-container">
+    <h3 class="title">Login</h3>
+    <el-form-item prop="account">
+      <el-input type="text" v-model="form.email" auto-complete="off" placeholder="Email"></el-input>
+    </el-form-item>
+    <el-form-item prop="checkPass">
+      <el-input type="password" v-model="form.password" auto-complete="off" placeholder="Password"></el-input>
+    </el-form-item>
+    <!-- <el-checkbox v-model="checked" checked class="remember">记住密码</el-checkbox> -->
+    <el-form-item style="width:100%;">
+      <button class="btn btn-dark btn-block" @click.prevent="login">Entrar</button>
+      <!--<el-button @click.native.prevent="handleReset2">重置</el-button>-->
+    </el-form-item>
+  </el-form>
 </template>
 
 

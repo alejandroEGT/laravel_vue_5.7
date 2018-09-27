@@ -3,6 +3,15 @@ require('./bootstrap');
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import routes from './rutas';
+//ELEMENT UI.
+import Element from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+import esLocale from 'element-ui/lib/locale/lang/es'
+//Axios
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+//jwt
+import VueAuth from '@websanova/vue-auth'
 
 
 Vue.use(VueRouter)
@@ -15,15 +24,7 @@ Vue.router = new VueRouter({
   //mode: 'history'
 });
 let AppLayout= require('./components/ExampleComponent');//Vista Suprema
-//ELEMENT UI.
-import Element from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
-import esLocale from 'element-ui/lib/locale/lang/es'
-//Axios
-import axios from 'axios'
-import VueAxios from 'vue-axios'
-//jwt
-import VueAuth from '@websanova/vue-auth'
+
  
 Vue.use(VueAxios, axios)
 // Vue.use(Element);
